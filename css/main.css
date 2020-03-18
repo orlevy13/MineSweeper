@@ -1,0 +1,73 @@
+body {
+    font-family: Verdana;
+}
+
+h1 {
+    text-align: center;
+    background-color: blanchedalmond;
+    padding: 20px;
+}
+
+table {
+    position: absolute;
+    left: 40%;
+    right: 50%;
+    top: 25%;
+}
+
+td {
+    border: 1px solid black;
+    border-radius: 2px;
+    height: 25px;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.face {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    cursor: pointer;
+    display: inline;
+}
+
+.timer {
+    display: inline-block;
+    position: absolute;
+    right: 25%;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 3px 5px;
+    background-color: #eee;
+    width: 100px;
+    text-align: center;
+    cursor: default;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.mark {
+    background-color: rgb(189, 201, 212);
+}
+
+.difficulty-btn {
+    margin-left: 10px;
+    background-color: #eee;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.hint {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+}
