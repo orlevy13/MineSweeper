@@ -4,28 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MineSweeper </title>
+    <title>Minesweeper </title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body onload="init()">
     <h1>MineSweeper!</h1>
 
-    <div class="face" title="Restart" onclick="init()">😃</div>
+    <div class="face btn-theme" title="Restart" onclick="init()">😃</div>
 
-    <span class="difficulty-btn" onclick="setDifficulty(4)">Easy</span>
-    <span class="difficulty-btn" onclick="setDifficulty(8)">Hard</span>
-    <span class="difficulty-btn" onclick="setDifficulty(12)">Extreme</span>
+    <span class="difficulty-btn btn-theme" onclick="setDifficulty(4)">Easy</span>
+    <span class="difficulty-btn btn-theme" onclick="setDifficulty(8)">Hard</span>
+    <span class="difficulty-btn btn-theme" onclick="setDifficulty(12)">Extreme</span>
 
-    <div class="timer">Timer: 0</div>
-    <!-- <div class="hint">You have <span class="hints-count"> </span> hints left </div> -->
+    <div class="timer btn-theme"></div>
+    <div class="best-time btn-theme"></div>
+
+
+    <button title="Use Hint" onclick="hintClicked()" class="hint-btn btn-theme"></button>
+
+    <div class="hint btn-theme">Hints: <span class="hints-count"> </span></div>
+
+    <div class="lives btn-theme">Lives: <span class="lives-count"></span></div>
+
+    <div class="safe-clicks btn-theme">Safe clicks:
+        <span class="safe-clicks-count"></span><span>
+            <button title="Click to reveal a safe cell" class="btn-theme safe-click-btn"
+                onclick="markSafeCell(gBoard)">Use</button> </span>
+    </div>
+
 
     <table>
+        <div class="game-over-modal"></div>
         <thead>
         </thead>
         <tbody class="board"></tbody>
     </table>
-
+    <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
 </body>
 
