@@ -10,7 +10,7 @@ h1 {
 }
 
 table {
-    margin:3% auto;
+    margin: 3% auto;
     border-spacing: 1px;
     text-align: center;
 }
@@ -76,11 +76,16 @@ ul {
 .hint-btn {
     height: 45px;
     width: 45px;
-    background-image: url(/images/hint.png);
     background-size: cover;
     position: relative;
     left: 5%;
+    display: inline-block;
     border: 2px solid black;
+}
+
+.hint-btn img {
+    height: 45px;
+    width: 45px;
 }
 
 .hint-btn:hover {
