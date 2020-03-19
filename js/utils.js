@@ -36,6 +36,12 @@ function setDifficulty(size) {
 }
 
 function checkWin() {
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[0].length; j++) {
+            var cell = gBoard[i][j];
+            if (cell.isMine && !cell.isMarked) return;
+        }
+    }
     if (((gDifficulty.SIZE ** 2) - gGame.shownCount - gDifficulty.MINES) === 0) {
         return gameOver(true);
     }
