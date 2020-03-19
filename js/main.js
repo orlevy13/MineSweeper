@@ -47,7 +47,7 @@ function renderBoard(board) {
             var cell = board[i][j];
             var cellContent;
 
-            if (cell.isMine && cell.isShown) cellContent = MINE;
+            if (cell.isMine && cell.isShown || cell.isMarked) cellContent = MINE;
             else if (cell.isMarked && !cell.isShown) cellContent = FLAG;
             else if (!cell.isShown || !cell.minesAroundCount) cellContent = EMPTY;
             else cellContent = cell.minesAroundCount;
@@ -100,6 +100,7 @@ function cellClicked(elCell) {
         } else {
             gGame.lives--;
             cell.isShown = true; // revealing the stepped on mine
+            cell.isMarked = true;
             renderBoard(gBoard);
             checkWin();
             renderGameStats();
