@@ -100,7 +100,6 @@ function cellClicked(elCell) {
         } else {
             gGame.lives--;
             cell.isShown = true; // revealing the stepped on mine
-            gGame.shownCount++;
             renderBoard(gBoard);
             checkWin();
             renderGameStats();

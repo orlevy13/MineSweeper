@@ -36,8 +36,7 @@ function setDifficulty(size) {
 }
 
 function checkWin() {
-    if (gGame.shownCount + gGame.markedCount === //since all bombs must be flagged!
-        gDifficulty.SIZE ** 2) {
+    if (((gDifficulty.SIZE ** 2) - gGame.shownCount - gDifficulty.MINES) === 0) {
         return gameOver(true);
     }
 }
