@@ -76,8 +76,8 @@ ul {
 .hint-btn {
     height: 45px;
     width: 45px;
-    background-image: url(/images/hint.png);
-    background-size: cover;
+    font-size: 30px;
+    text-align: center;
     position: relative;
     left: 5%;
     border: 2px solid black;
