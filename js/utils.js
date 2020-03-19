@@ -36,13 +36,7 @@ function setDifficulty(size) {
 }
 
 function checkWin() {
-    for (var i = 0; i < gBoard.length; i++) {
-        for (var j = 0; j < gBoard[0].length; j++) {
-            var cell = gBoard[i][j];
-            if (cell.isMine && !cell.isMarked) return;
-        }
-    }
-    if (((gDifficulty.SIZE ** 2) - gGame.shownCount - gDifficulty.MINES) === 0) {
+    if ((gDifficulty.SIZE ** 2 - gGame.shownCount) === gDifficulty.MINES) {
         return gameOver(true);
     }
 }
@@ -130,6 +124,10 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+function renderSafeClicks() {
+    document.querySelector('.safe-clicks-count').innerText = gGame.safeClicks;
 }
 
 function renderGameStats() {

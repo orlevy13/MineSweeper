@@ -47,8 +47,8 @@ function renderBoard(board) {
             var cell = board[i][j];
             var cellContent;
 
-            if (cell.isMine && cell.isShown || cell.isMarked) cellContent = MINE;
-            else if (cell.isMarked && !cell.isShown) cellContent = FLAG;
+            if (cell.isMine && cell.isShown) cellContent = MINE;
+            else if (cell.isMarked) cellContent = FLAG;
             else if (!cell.isShown || !cell.minesAroundCount) cellContent = EMPTY;
             else cellContent = cell.minesAroundCount;
 
@@ -100,7 +100,6 @@ function cellClicked(elCell) {
         } else {
             gGame.lives--;
             cell.isShown = true; // revealing the stepped on mine
-            cell.isMarked = true;
             renderBoard(gBoard);
             checkWin();
             renderGameStats();
@@ -223,7 +222,7 @@ function hintClicked() {
     if (!gGame.isOn) return;//can't use hint as first click
     if (gHintMode) return;//if user clicked the hint and didn't use it yet
     if (!gGame.hints) return console.log('You used all of your hints..');
-    if (!gIsMinesPlaced) return; //if user wants to use hint before mines were placed
+    if (!gIsMinesPlaced) return;
     gHintMode = true;
     gGame.hints--;
     renderGameStats();

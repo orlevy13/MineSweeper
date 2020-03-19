@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minesweeper </title>
+    <title>MineSweeper </title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -21,7 +21,7 @@
     <div class="best-time btn-theme"></div>
 
 
-    <div title="Use Hint" onclick="hintClicked()" class="hint-btn btn-theme"><img src="images/hint.png"> </div>
+    <button title="Use Hint" onclick="hintClicked()" class="hint-btn btn-theme"></button>
 
     <div class="hint btn-theme">Hints: <span class="hints-count"> </span></div>
 
@@ -29,7 +29,7 @@
 
     <div class="safe-clicks btn-theme">Safe clicks:
         <span class="safe-clicks-count"></span><span>
-            <button title="Click to reveal a safe cell" class="btn-theme safe-click-btn"
+            <button title="Click to reveal a safe spot" class="btn-theme safe-click-btn"
                 onclick="markSafeCell(gBoard)">Use</button> </span>
     </div>
 
