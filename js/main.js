@@ -48,7 +48,7 @@ function renderBoard(board) {
             var cellContent;
 
             if (cell.isMine && cell.isShown) cellContent = MINE;
-            else if (cell.isMarked) cellContent = FLAG;
+            else if (cell.isMarked && !cell.isShown) cellContent = FLAG;
             else if (!cell.isShown || !cell.minesAroundCount) cellContent = EMPTY;
             else cellContent = cell.minesAroundCount;
 
@@ -222,6 +222,7 @@ function hintClicked() {
     if (!gGame.isOn) return;//can't use hint as first click
     if (gHintMode) return;//if user clicked the hint and didn't use it yet
     if (!gGame.hints) return console.log('You used all of your hints..');
+    if (!gIsMinesPlaced) return; //if user wants to use hint before mines were placed
     gHintMode = true;
     gGame.hints--;
     renderGameStats();
