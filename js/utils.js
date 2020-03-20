@@ -133,6 +133,15 @@ function renderSafeClicks() {
 function renderGameStats() {
     document.querySelector('.face').innerText = '😃';
     document.querySelector('.safe-clicks-count').innerText = gGame.safeClicks;
-    document.querySelector('.lives-count').innerText = gGame.lives;
-    document.querySelector('.hints-count').innerText = gGame.hints;
+    var livesCount = '';
+    for (var i = 0; i < gGame.lives; i++) {
+        livesCount += '❤️';
+    }
+    document.querySelector('.lives-count').innerText = livesCount;
+    var hintsCount = '';
+    for (i = 0; i < gGame.hints; i++) {
+        hintsCount += '💡';
+    }
+    document.querySelector('.hints-count').innerText = hintsCount;
+    document.querySelector('.game-over-modal').style = "display: none";
 }

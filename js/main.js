@@ -31,7 +31,6 @@ function init() {
     };
     gIsMinesPlaced = false;
     gHintMode = false;
-    document.querySelector('.game-over-modal').style = "display: none";
     renderGameStats();//like hints,lives,safeClicks
     initTimer();
     renderBoard(gBoard);
@@ -47,10 +46,14 @@ function renderBoard(board) {
             var cell = board[i][j];
             var cellContent;
 
-            if (cell.isMine && cell.isShown) cellContent = MINE;
-            else if (cell.isMarked) cellContent = FLAG;
-            else if (!cell.isShown || !cell.minesAroundCount) cellContent = EMPTY;
-            else cellContent = cell.minesAroundCount;
+            if (gHintMode && cell.isShown) {
+                if (cell.isMine) cellContent = MINE;
+                else cellContent = (!cell.minesAroundCount) ? EMPTY : cell.minesAroundCount;
+            } else if (cell.isShown) {
+                if (cell.isMine) cellContent = MINE;
+                else cellContent = (!cell.minesAroundCount) ? EMPTY : cell.minesAroundCount;
+            } else if (cell.isMarked) cellContent = FLAG;
+            else cellContent = EMPTY
 
             var cellClass = (cell.isShown) ? 'mark' : '';
             var cellId = `cell-${i}-${j}`;

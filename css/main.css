@@ -1,6 +1,7 @@
 body {
     font-family: Verdana;
     background-color: rgba(109, 103, 95, 0.8);
+    margin: 0;
 }
 
 h1 {
@@ -31,6 +32,7 @@ td {
 }
 
 .face {
+    text-align: center;
     margin: auto;
     position: relative;
     left: 48%;
@@ -43,6 +45,7 @@ td {
 }
 
 .timer {
+    text-align: center;
     display: inline-block;
     position: absolute;
     right: 25%;
@@ -71,6 +74,9 @@ ul {
     top: 30%;
     left: 5%;
     cursor: default;
+    width: 58px;
+    height: 25px;
+    font-size: 18px;
 }
 
 .hint-btn {
@@ -91,6 +97,10 @@ ul {
 
 .lives {
     position: absolute;
+    text-align: left;
+    padding: 8px 1px;
+    height: 25px;
+    width: 68px;
     top: 35%;
     left: 5%;
     background-color: #eee;
@@ -102,7 +112,7 @@ ul {
     position: absolute;
     right: 25%;
     top: 20%;
-    width: 100px;
+    width: max-content;
     cursor: default;
     border: 2px solid black;
 }
@@ -111,7 +121,6 @@ ul {
     background-color: #eee;
     border-radius: 4px;
     padding: 2px 5px;
-    text-align: center;
 }
 
 .game-over-modal {
