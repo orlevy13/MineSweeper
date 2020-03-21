@@ -16,6 +16,9 @@ var gBoard;
 var gStartTime;
 var gTimeInterval;
 var gHintMode;
+var btnHoverSound = new Audio('sounds/btn.mp3');
+var loseSound = new Audio('sounds/lose.mp3');
+var winSound = new Audio('sounds/win.mp3');
 
 
 function init() {
@@ -171,7 +174,8 @@ function gameOver(isWin) {
     showAllMines(gBoard);
     if (isWin) {
         setBestTime();
-    }
+        winSound.play();
+    } else loseSound.play();
 }
 
 

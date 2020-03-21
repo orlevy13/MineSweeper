@@ -20,22 +20,15 @@ function createBoard(size) {
     return board;
 };
 
-function setDifficulty(size) {
+function setDifficulty(size, minesCount, level) {
     gDifficulty.SIZE = size;
-    if (size === 4) {
-        gDifficulty.MINES = 2;
-        gDifficulty.level = 'easy';
-    } else if (size === 8) {
-        gDifficulty.MINES = 12;
-        gDifficulty.level = 'hard';
-    } else {
-        gDifficulty.MINES = 30;
-        gDifficulty.level = 'extreme';
-    }
+    gDifficulty.MINES = minesCount;
+    gDifficulty.level = level;
     return init();
 }
 
 function checkWin() {
+    //cells number - shown cells === mine cells  
     if ((gDifficulty.SIZE ** 2 - gGame.shownCount) === gDifficulty.MINES) {
         return gameOver(true);
     }
@@ -65,51 +58,18 @@ function renderTime() {
 }
 
 function setBestTime() {
-    switch (gDifficulty.level) { //best time depends on the difficulty level
-        case 'easy':
-            if (localStorage.easyBestTime === undefined) {
-                localStorage.easyBestTime = gGame.secondsPassed;
-            } else {
-                if (localStorage.easyBestTime > gGame.secondsPassed) {
-                    localStorage.easyBestTime = gGame.secondsPassed;
-                }
-            }
-            break;
-        case 'hard':
-            if (localStorage.hardBestTime === undefined) {
-                localStorage.hardBestTime = gGame.secondsPassed;
-            } else {
-                if (localStorage.hardBestTime > gGame.secondsPassed) {
-                    localStorage.hardBestTime = gGame.secondsPassed;
-                }
-            }
-            break;
-        case 'extreme':
-            if (localStorage.extremeBestTime === undefined) {
-                localStorage.extremeBestTime = gGame.secondsPassed;
-            } else {
-                if (localStorage.extremeBestTime > gGame.secondsPassed) {
-                    localStorage.extremeBestTime = gGame.secondsPassed;
-                }
-            }
-            break;
+    var level = gDifficulty.level;
+    if (localStorage.getItem(level) === null) {
+        localStorage.setItem(level, gGame.secondsPassed);
+    } else if (localStorage.getItem(level) > gGame.secondsPassed) {
+        localStorage.setItem(level, gGame.secondsPassed);
     }
-    renderBestTime(gDifficulty.level);
+    renderBestTime(level);
 }
 
-function renderBestTime(difficulty) {
-    switch (difficulty) { //rendering in accordance to difficulty level
-        case 'easy':
-            var time = localStorage.easyBestTime;
-            break;
-        case 'hard':
-            var time = localStorage.hardBestTime;
-            break;
-        case 'extreme':
-            var time = localStorage.extremeBestTime;
-            break;
-    }
-    if (time === undefined) document.querySelector('.best-time').innerText = 'Best Time: None yet';
+function renderBestTime(level) {
+    var time = localStorage.getItem(level);
+    if (time === null) document.querySelector('.best-time').innerText = 'Best Time: None yet';
     else document.querySelector('.best-time').innerText = 'Best time: ' + time;
 }
 
@@ -126,10 +86,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
-function renderSafeClicks() {
-    document.querySelector('.safe-clicks-count').innerText = gGame.safeClicks;
-}
-
 function renderGameStats() {
     document.querySelector('.face').innerText = '😃';
     document.querySelector('.safe-clicks-count').innerText = gGame.safeClicks;
@@ -144,4 +100,8 @@ function renderGameStats() {
     }
     document.querySelector('.hints-count').innerText = hintsCount;
     document.querySelector('.game-over-modal').style = "display: none";
+}
+
+function playBtnSound(ev) {
+    btnHoverSound.play();
 }

@@ -42,6 +42,11 @@ td {
     font-size: 30px;
     width: 45px;
     height: 45px;
+    transition: 0.2;
+}
+
+.face:hover {
+    transform: scale(1.05);
 }
 
 .timer {
@@ -64,9 +69,16 @@ ul {
 }
 
 .difficulty-btn {
+    display: inline-block;
     margin-left: 10px;
-    cursor: pointer;
     border: 2px solid black;
+    height: 20px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.difficulty-btn:hover {
+    transform: scale(1.1);
 }
 
 .hint {
@@ -84,8 +96,8 @@ ul {
     width: 45px;
     font-size: 30px;
     text-align: center;
-    position: relative;
-    left: 5%;
+    position: absolute;
+    left: 30%;
     border: 2px solid black;
 }
 
@@ -153,4 +165,22 @@ ul {
     border: 2px solid black;
     cursor: pointer;
     font-size: 17px;
+    transition: 0.2;
+}
+
+.safe-click-btn:hover {
+    transform: scale(1.1);
+}
+
+.difficulty {
+    position: absolute;
+    top: 15%;
+    width: 400px;
+    height: 100px;
+    justify-content: center;
+}
+
+.difficulty-text {
+    margin: 10px;
+    width: fit-content;
 }
